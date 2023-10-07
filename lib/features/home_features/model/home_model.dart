@@ -29,7 +29,7 @@ class HomeModel {
 
 
   HomeModel.fromJson(dynamic json) {
-    topBanner = TopBanner.fromJson(json['top_banner']);
+    topBanner = json['top_banner'] != null ? TopBanner.fromJson(json['top_banner']) : null;
 
     if (json['sliders'] != null) {
       sliders = [];
@@ -76,7 +76,7 @@ class HomeModel {
         colTwo?.add(ColTwo.fromJson(value));
       });
     }
-    if (json['col_three'] != null) {
+    if (json['col_ehree'] != null) {
       colThree = [];
       json['col_three'].forEach((value) {
         colThree?.add(ColThree.fromJson(value));
@@ -100,11 +100,11 @@ class HomeModel {
       });
     }
 
-    colOneId = json['col_one_id'] ?? 0;
-    colTwoId = json['col_two_id'] ?? 0;
-    colThreeId = json['col_three_id'] ?? 0;
-    colFourId = json['col_four_id'] ?? 0;
-    colFiveId = json['col_five_id'] ?? 0;
+    colOneId = json['col_one_id'] ?? '0';
+    colTwoId = json['col_two_id'] ?? '0';
+    colThreeId = json['col_three_id'] ?? '0';
+    colFourId = json['col_four_id'] ?? '0';
+    colFiveId = json['col_five_id'] ?? '0';
     colOneName = json['col_one_name'];
     colTwoName = json['col_two_name'];
     colThreeName = json['col_three_name'];

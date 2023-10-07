@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_prokala/const/theme/theme.dart';
 import 'package:flutter_prokala/features/home_features/logic/bloc/home_bloc.dart';
-import 'package:flutter_prokala/features/home_features/logic/cubit/home_cubit.dart';
 import 'package:flutter_prokala/features/home_features/services/home_respository.dart';
 import 'package:flutter_prokala/features/intro_features/logic/intro_cubit.dart';
 import 'package:flutter_prokala/features/intro_features/screens/splash_screen.dart';
@@ -13,6 +12,7 @@ import 'package:flutter_prokala/features/public_features/logic/bottom_nav_cubit.
 import 'package:flutter_prokala/features/public_features/screens/unknownrout_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/category_features/screen/category_screen.dart';
 import 'features/home_features/screens/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
 import 'features/public_features/screens/bottom_nav_bar.dart';
@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
             IntroScreen.screenId: (context) => const IntroScreen(),
             HomeScreen.screenId: (context) => const HomeScreen(),
             BottomNavBarScreen.screenId: (context) => const BottomNavBarScreen(),
+            CategoryScreen.screenId: (context) => const CategoryScreen(),
           },
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_prokala/const/theme/colors.dart';
 import 'package:flutter_prokala/features/public_features/logic/bottom_nav_cubit.dart';
 
+import '../../category_features/screen/category_screen.dart';
 import '../../home_features/screens/home_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class BottomNavBarScreen extends StatefulWidget {
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   List<Widget> screenList = [
     HomeScreen(),
-    Container(),
+    CategoryScreen(),
     Container(),
     Container(),
   ];
