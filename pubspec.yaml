@@ -30,6 +30,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+
+  animate_do: ^3.1.2
+  flutter_screenutil: ^5.9.0
+  flutter_custom_clippers: ^2.1.0
+  smooth_page_indicator: ^1.1.0
+  bloc: ^8.1.2
+  flutter_bloc: ^8.1.3
+  shared_preferences: ^2.2.1
+  dio: ^5.3.3
+  shimmer: ^3.0.0
+  carousel_slider: ^4.2.1
+  url_launcher: ^6.1.14
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -59,8 +76,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/images/intro/
+    - assets/images/amazing/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -74,12 +93,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: normal
+      fonts:
+        - asset: assets/fonts/IRAN-Sans-Regular.ttf
+
+    - family: bold
+      fonts:
+        - asset: assets/fonts/IRAN-Sans-Bold.ttf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
