@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_prokala/features/category_features/model/category_model.dart';
-import 'package:flutter_prokala/features/home_features/logic/bloc/home_bloc.dart';
 import 'package:flutter_prokala/features/public_features/error/error_exception.dart';
 import 'package:flutter_prokala/features/public_features/error/error_message_class.dart';
 import 'package:meta/meta.dart';
@@ -15,7 +14,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final CategoryRepository repository;
 
   CategoryBloc(this.repository) : super(CategoryInitial()) {
-    on<CategoryEvent>((event, emit) async {
+    on<CallCategory>((event, emit) async {
+      print('object');
       emit(CategoryLoadingState());
 
       try {

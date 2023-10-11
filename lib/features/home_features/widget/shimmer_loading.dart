@@ -17,6 +17,8 @@ class ShimmerLoading extends StatelessWidget {
       highlightColor: Colors.grey[100]!,
       child: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               width: getWidth(context, 0.95),

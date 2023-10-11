@@ -36,7 +36,7 @@ class Category {
 
     if (json['sub_category'] != null) {
       subCategory = [];
-      json['sub_category'].forEatch((value) {
+      json['sub_category'].forEach((value) {
         subCategory?.add(SubCategory.fromJson(value));
       });
     }

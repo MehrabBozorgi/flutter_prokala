@@ -17,8 +17,8 @@ class BottomNavBarScreen extends StatefulWidget {
 
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   List<Widget> screenList = [
-    HomeScreen(),
-    CategoryScreen(),
+    const HomeScreen(),
+    const CategoryScreen(),
     Container(),
     Container(),
   ];

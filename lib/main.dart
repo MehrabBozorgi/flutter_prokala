@@ -17,8 +17,9 @@ import 'features/home_features/screens/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
 import 'features/public_features/screens/bottom_nav_bar.dart';
 
-void main() {
+void main()  {
   HttpOverrides.global = MyHttpOverrides();
+
   runApp(const MyApp());
 }
 
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
             builder: (context) => const UnKnowRoutScreen(),
           ),
           routes: {
+
             SplashScreen.screenId: (context) => const SplashScreen(),
             IntroScreen.screenId: (context) => const IntroScreen(),
             HomeScreen.screenId: (context) => const HomeScreen(),
@@ -64,7 +66,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override
