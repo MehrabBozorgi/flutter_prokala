@@ -46,7 +46,8 @@ dependencies:
   shimmer: ^3.0.0
   carousel_slider: ^4.2.1
   url_launcher: ^6.1.14
-
+  flutter_secure_storage: ^9.0.0
+  expandable_text: ^2.3.0
 
 
   # The following adds the Cupertino Icons font to your application.

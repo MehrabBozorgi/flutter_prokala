@@ -12,9 +12,12 @@ import 'package:flutter_prokala/features/public_features/logic/bottom_nav_cubit.
 import 'package:flutter_prokala/features/public_features/screens/unknownrout_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/authentication_features/screen/auth_screen.dart';
 import 'features/category_features/screen/category_screen.dart';
 import 'features/home_features/screens/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
+import 'features/product_feature/screen/product_detail_screen.dart';
+import 'features/public_features/logic/token_check/token_check_cubit.dart';
 import 'features/public_features/screens/bottom_nav_bar.dart';
 
 void main()  {
@@ -35,6 +38,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => IntroCubit()),
+          BlocProvider(create: (context) => TokenCheckCubit()),
           // BlocProvider(create: (context) => HomeCubit()),
           BlocProvider(create: (context) => BottomNavCubit()),
           BlocProvider(create: (context) => HomeBloc(HomeRepository())),
@@ -60,6 +64,8 @@ class MyApp extends StatelessWidget {
             HomeScreen.screenId: (context) => const HomeScreen(),
             BottomNavBarScreen.screenId: (context) => const BottomNavBarScreen(),
             CategoryScreen.screenId: (context) => const CategoryScreen(),
+            AuthScreen.screenId: (context) => const AuthScreen(),
+            ProductDetailScreen.screenId: (context) => const ProductDetailScreen(),
           },
         ),
       ),

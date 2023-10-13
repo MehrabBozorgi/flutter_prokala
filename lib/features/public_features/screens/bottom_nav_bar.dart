@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_prokala/const/theme/colors.dart';
 import 'package:flutter_prokala/features/public_features/logic/bottom_nav_cubit.dart';
+import 'package:flutter_prokala/features/public_features/logic/token_check/token_check_cubit.dart';
 
+import '../../cart_feature/screen/check_cart.dart';
 import '../../category_features/screen/category_screen.dart';
 import '../../home_features/screens/home_screen.dart';
 
@@ -19,16 +21,23 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   List<Widget> screenList = [
     const HomeScreen(),
     const CategoryScreen(),
-    Container(),
+    CheckCart(),
     Container(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    BlocProvider.of<TokenCheckCubit>(context).tokenCheck();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BlocBuilder<BottomNavCubit, int>(
       builder: (context, state) {
-        final bottomNavCubit=BlocProvider.of<BottomNavCubit>(context);
+        final bottomNavCubit = BlocProvider.of<BottomNavCubit>(context);
         return SafeArea(
           child: Scaffold(
             bottomNavigationBar: BottomNavigationBar(

@@ -7,7 +7,7 @@ import 'colors.dart';
 class CustomTheme {
   static ThemeData lightTheme = ThemeData.light().copyWith(
     primaryColor: primaryColor,
-
+scaffoldBackgroundColor: Colors.white,
     useMaterial3: false,
     dialogTheme: DialogTheme(shape: getShapeWidget(10), elevation: 5),
     iconTheme: const IconThemeData().copyWith(
@@ -42,7 +42,7 @@ class CustomTheme {
       ),
     ),
 
-    appBarTheme: AppBarTheme(centerTitle: false),
+    appBarTheme: AppBarTheme(centerTitle: false,color: whiteColor,iconTheme: IconThemeData(color: darkColor)),
 
     //
     inputDecorationTheme: InputDecorationTheme(
