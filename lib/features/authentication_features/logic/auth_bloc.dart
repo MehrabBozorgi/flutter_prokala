@@ -9,6 +9,7 @@ import '../../public_features/error/error_exception.dart';
 import '../services/auth_repository.dart';
 
 part 'auth_event.dart';
+
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {

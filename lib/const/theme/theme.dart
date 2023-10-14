@@ -9,7 +9,7 @@ class CustomTheme {
     primaryColor: primaryColor,
 scaffoldBackgroundColor: Colors.white,
     useMaterial3: false,
-    dialogTheme: DialogTheme(shape: getShapeWidget(10), elevation: 5),
+    dialogTheme: DialogTheme(shape: getShapeFunc(10), elevation: 5),
     iconTheme: const IconThemeData().copyWith(
       color: iconColor,
       size: ScreenUtil().setSp(20),
@@ -21,14 +21,14 @@ scaffoldBackgroundColor: Colors.white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        shape: getShapeWidget(10),
+        shape: getShapeFunc(10),
         alignment: Alignment.center,
         backgroundColor: primaryColor,
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        shape: getShapeWidget(10),
+        shape: getShapeFunc(10),
         alignment: Alignment.center,
         side: const BorderSide(color: primaryColor),
         foregroundColor: primaryColor,
@@ -36,7 +36,7 @@ scaffoldBackgroundColor: Colors.white,
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        shape: getShapeWidget(10),
+        shape: getShapeFunc(10),
         alignment: Alignment.center,
         foregroundColor: primaryColor,
       ),

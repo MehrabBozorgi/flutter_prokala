@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/product_model.dart';
+import '../screen/product_detail_screen.dart';
 import 'favorite_button.dart';
 
 class ProductAppBarWidget extends StatelessWidget {

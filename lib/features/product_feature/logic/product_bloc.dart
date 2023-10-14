@@ -10,6 +10,7 @@ import '../../public_features/error/error_exception.dart';
 import '../services/product_repository.dart';
 
 part 'product_event.dart';
+
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {

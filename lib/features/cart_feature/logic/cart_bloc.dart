@@ -10,6 +10,7 @@ import '../../public_features/error/error_exception.dart';
 import '../services/cart_repository.dart';
 
 part 'cart_event.dart';
+
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
@@ -76,7 +77,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       cartModel.cart!.removeWhere((element) => element.cartId == int.parse(event.cartId));
       final price = (currentCartItem.productPrice! + currentCartItem.productDeliveryPrice!);
-      cartModel.cartTotal= (int.parse(cartModel.cartTotal!) - price).toString();
+      cartModel.cartTotal = (int.parse( cartModel.cartTotal!) - price).toString();
 
 
 

@@ -7,7 +7,7 @@ getSnackBarWidget(BuildContext context, String text, Color color) {
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color,
-      shape: getShapeWidget(10),
+      shape: getShapeFunc(10),
       behavior: SnackBarBehavior.floating,
       content: Text(text,style: TextStyle(fontFamily: 'bold'),),
       dismissDirection: DismissDirection.horizontal,

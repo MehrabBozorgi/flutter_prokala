@@ -6,13 +6,14 @@ class ProductModel {
   bool? fav;
   String? brand;
   bool? checkCart;
+  List<UserComments>? userComments;
 
   ProductModel.fromJson(dynamic json) {
     product = json['product'] != null ? Product.fromJson(json['product']) : null;
-    totalPrice = json['total_price']??0;
-    percent = json['percent']??'0';
+    totalPrice = json['total_price'] ?? 0;
+    percent = json['percent'] ?? '0';
     fav = json['fav'];
-    brand = json['brand']??'';
+    brand = json['brand'] ?? '';
     checkCart = json['check_cart'];
     if (json['gallerys'] != null) {
       gallery = [];
@@ -20,6 +21,34 @@ class ProductModel {
         gallery?.add(Gallery.fromJson(v));
       });
     }
+
+    if (json['comments'] != null) {
+      userComments = [];
+      json['comments'].forEach((v) {
+        userComments?.add(UserComments.fromJson(v));
+      });
+    }
+  }
+}
+
+class UserComments {
+  int? commentId;
+  String? fullName;
+  String? comment;
+  String? date;
+
+  UserComments({
+    this.commentId,
+    this.fullName,
+    this.comment,
+    this.date,
+  });
+
+  UserComments.fromJson(dynamic json) {
+    commentId = json['comment_id'];
+    fullName = json['fullname'];
+    comment = json['comment'];
+    date = json['date'];
   }
 }
 
@@ -64,6 +93,7 @@ class Product {
     defaultPrice = json['default_price'];
     deliverPrice = json['deliver_price'];
     image = json['image'];
-    productBody = json['product_body'].toString().replaceAll('&zwnj;', '').replaceAll('&nbsp;', '');
+    productBody =
+        json['product_body'].toString().replaceAll('&zwnj;', '').replaceAll('&nbsp;', '');
   }
 }
