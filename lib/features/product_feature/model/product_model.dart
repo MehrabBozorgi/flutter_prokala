@@ -48,7 +48,7 @@ class UserComments {
     commentId = json['comment_id'];
     fullName = json['fullname'];
     comment = json['comment'];
-    date = json['date'];
+    date = json['date'].toString().replaceAll('.', '/');
   }
 }
 

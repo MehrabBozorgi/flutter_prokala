@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_prokala/features/search_feature/screen/search_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../const/responsive.dart';
@@ -17,7 +18,7 @@ class SearchBarWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: getWidth(context, 0.02), vertical: 8.sp),
       child: GestureDetector(
         onTap: () {
-          ///on tap
+          Navigator.pushNamed(context, SearchScreen.screenId);
         },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: getWidth(context, 0.03)),

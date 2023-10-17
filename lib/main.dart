@@ -13,12 +13,16 @@ import 'package:flutter_prokala/features/public_features/screens/unknownrout_scr
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/authentication_features/screen/auth_screen.dart';
+import 'features/category_features/screen/all_category_screen.dart';
 import 'features/category_features/screen/category_screen.dart';
+import 'features/comment_features/screen/add_comment_screen.dart';
+import 'features/comment_features/screen/show_comment_screen.dart';
 import 'features/home_features/screens/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
 import 'features/product_feature/screen/product_detail_screen.dart';
 import 'features/public_features/logic/token_check/token_check_cubit.dart';
 import 'features/public_features/screens/bottom_nav_bar.dart';
+import 'features/search_feature/screen/search_screen.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -44,6 +48,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => HomeBloc(HomeRepository())),
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -65,6 +70,10 @@ class MyApp extends StatelessWidget {
             CategoryScreen.screenId: (context) => const CategoryScreen(),
             AuthScreen.screenId: (context) => const AuthScreen(),
             ProductDetailScreen.screenId: (context) => const ProductDetailScreen(),
+            ShowCommentScreen.screenId: (context) => const ShowCommentScreen(),
+            AddCommentScreen.screenId: (context) => const AddCommentScreen(),
+            AllCategoryScreen.screenId: (context) => const AllCategoryScreen(),
+            SearchScreen.screenId: (context) => const SearchScreen(),
           },
         ),
       ),

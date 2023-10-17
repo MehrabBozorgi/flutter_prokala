@@ -80,6 +80,7 @@ class CompletedBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(homeModel.colOneId);
     return FadeIn(
       child: CustomScrollView(
         slivers: [
@@ -99,46 +100,51 @@ class CompletedBody extends StatelessWidget {
                     SizedBox(height: 16.sp),
                     homeModel.random == null
                         ? const SizedBox.shrink()
-                        :
-                    ProductListWidget(list: homeModel.random!, title: 'محصولات پر فروش'),
+                        : ProductListWidget(
+                            list: homeModel.random!, title: 'محصولات پر فروش', id: null),
                     SizedBox(height: 16.sp),
                     CategoryBrandWidget(homeModel: homeModel),
                     SizedBox(height: 15.sp),
                     homeModel.colOne == null
                         ? const SizedBox.shrink()
                         : ProductListWidget(
-                      list: homeModel.colOne!,
-                      title: homeModel.colOneName,
-                    ),
+                            list: homeModel.colOne!,
+                            title: homeModel.colOneName,
+                            id: homeModel.colOneId,
+                          ),
                     SizedBox(height: 10.sp),
                     TwoBannersWidget(homeModel: homeModel),
                     SizedBox(height: 15.sp),
                     homeModel.colTwo == null
                         ? const SizedBox.shrink()
                         : ProductListWidget(
-                      list: homeModel.colTwo!,
-                      title: homeModel.colTwoName,
-                    ),
+                            list: homeModel.colTwo!,
+                            title: homeModel.colTwoName,
+                            id: homeModel.colTwoId,
+                          ),
                     TopBannerWidget(homeModel: homeModel),
                     SizedBox(height: 10.sp),
                     homeModel.colThree == null
                         ? const SizedBox.shrink()
-                        :  ProductListWidget(
-                      list: homeModel.colThree!,
-                      title: homeModel.colThreeName,
-                    ),
+                        : ProductListWidget(
+                            list: homeModel.colThree!,
+                            title: homeModel.colThreeName,
+                            id: homeModel.colThreeId,
+                          ),
                     homeModel.colFour == null
                         ? const SizedBox.shrink()
                         : ProductListWidget(
-                      list: homeModel.colFour!,
-                      title: homeModel.colFourName,
-                    ),
+                            list: homeModel.colFour!,
+                            title: homeModel.colFourName,
+                            id: homeModel.colFourId,
+                          ),
                     homeModel.colFive == null
                         ? const SizedBox.shrink()
                         : ProductListWidget(
-                      list: homeModel.colFive!,
-                      title: homeModel.colFiveName,
-                    ),
+                            list: homeModel.colFive!,
+                            title: homeModel.colFiveName,
+                            id: homeModel.colFiveId,
+                          ),
                   ],
                 ),
               ],
@@ -149,4 +155,3 @@ class CompletedBody extends StatelessWidget {
     );
   }
 }
-

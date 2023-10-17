@@ -19,7 +19,7 @@ class CartCompletedSection extends StatelessWidget {
       children: [
         const SearchBarWidget(),
         cartModel.cart!.isEmpty
-            ? const Expanded(child: EmptyWidget())
+            ? const Expanded(child: EmptyWidget(title:  'هیچ محصولی انتخاب نکرده اید',),)
             : Expanded(
                 child: Column(
                   children: [

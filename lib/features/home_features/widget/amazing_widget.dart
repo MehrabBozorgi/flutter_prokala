@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_prokala/features/product_feature/screen/product_detail_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../const/responsive.dart';
@@ -20,55 +21,59 @@ class AmazingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  homeModel.amazing==null ?const SizedBox.shrink():Container(
-      width: getAllWidth(context),
-      height: Responsive.isTablet(context) ? getWidth(context, 0.55) : getWidth(context, 0.65),
-      color: primaryColor,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            Container(
-              width: getWidth(context, 0.25),
-              margin: EdgeInsets.symmetric(
-                horizontal: getWidth(context, 0.02),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+    return homeModel.amazing == null
+        ? const SizedBox.shrink()
+        : Container(
+            width: getAllWidth(context),
+            height: Responsive.isTablet(context)
+                ? getWidth(context, 0.55)
+                : getWidth(context, 0.65),
+            color: primaryColor,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
                 children: [
-                  Text(
-                    'پیشنهادات ویژه',
-                    style: TextStyle(
-                      fontFamily: 'bold',
-                      fontSize: Responsive.isTablet(context) ? 16.sp : 17.sp,
-                      fontWeight: FontWeight.bold,
-                      color: whiteColor,
+                  Container(
+                    width: getWidth(context, 0.25),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: getWidth(context, 0.02),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'پیشنهادات ویژه',
+                          style: TextStyle(
+                            fontFamily: 'bold',
+                            fontSize: Responsive.isTablet(context) ? 16.sp : 17.sp,
+                            fontWeight: FontWeight.bold,
+                            color: whiteColor,
+                          ),
+                        ),
+                        FadeInImage(
+                          placeholder: const AssetImage('assets/images/logo.png'),
+                          image: const AssetImage('assets/images/amazing/amazing_box.png'),
+                          width: getWidth(context, 0.25),
+                        ),
+                      ],
                     ),
                   ),
-                  FadeInImage(
-                    placeholder: const AssetImage('assets/images/logo.png'),
-                    image: const AssetImage('assets/images/amazing/amazing_box.png'),
-                    width: getWidth(context, 0.25),
-                  ),
+                  ListView.builder(
+                    itemCount: homeModel.amazing!.length,
+                    padding: EdgeInsets.symmetric(horizontal: getWidth(context, 0.02)),
+                    scrollDirection: Axis.horizontal,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final helper = homeModel.amazing![index];
+                      return AmazingItems(theme: theme, helper: helper);
+                    },
+                  )
                 ],
               ),
             ),
-            ListView.builder(
-              itemCount: homeModel.amazing!.length,
-              padding: EdgeInsets.symmetric(horizontal: getWidth(context, 0.02)),
-              scrollDirection: Axis.horizontal,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                final helper = homeModel.amazing![index];
-                return AmazingItems(theme: theme, helper: helper);
-              },
-            )
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
 
@@ -94,6 +99,8 @@ class AmazingItems extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           ///onTap
+          Navigator.of(context).pushNamed(ProductDetailScreen.screenId,
+              arguments: {'product_id': helper.id.toString()});
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

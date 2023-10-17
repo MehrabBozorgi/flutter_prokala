@@ -18,3 +18,17 @@ class CategoryErrorState extends CategoryState {
 
   CategoryErrorState(this.error);
 }
+
+
+/// all category
+class AllCategoryLoadingState extends CategoryState{}
+class AllCategoryCompletedState extends CategoryState{
+  final AllCategoryModel allCategoryModel;
+
+  AllCategoryCompletedState(this.allCategoryModel);
+}
+class AllCategoryErrorState extends CategoryState{
+  final ErrorMessageClass error;
+
+  AllCategoryErrorState(this.error);
+}

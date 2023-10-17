@@ -5,9 +5,11 @@ import 'package:flutter_prokala/features/public_features/error/error_exception.d
 import 'package:flutter_prokala/features/public_features/error/error_message_class.dart';
 import 'package:meta/meta.dart';
 
+import '../model/all_category_model.dart';
 import '../services/category_repository.dart';
 
 part 'category_event.dart';
+
 part 'category_state.dart';
 
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
@@ -15,7 +17,6 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
 
   CategoryBloc(this.repository) : super(CategoryInitial()) {
     on<CallCategory>((event, emit) async {
-      print('object');
       emit(CategoryLoadingState());
 
       try {
@@ -23,6 +24,18 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
         emit(CategoryCompletedState(categoryModel));
       } on DioException catch (e) {
         emit(CategoryErrorState(ErrorMessageClass(errorMsg: ErrorExceptions().fromError(e))));
+      }
+    });
+
+    on<CallAllCategoryEvent>((event, emit) async {
+      emit(AllCategoryLoadingState());
+
+      try {
+        AllCategoryModel allCategoryModel = await repository.callCategoryModel(event.id);
+        emit(AllCategoryCompletedState(allCategoryModel));
+      } on DioException catch (e) {
+        emit(AllCategoryErrorState(
+            ErrorMessageClass(errorMsg: ErrorExceptions().fromError(e))));
       }
     });
   }

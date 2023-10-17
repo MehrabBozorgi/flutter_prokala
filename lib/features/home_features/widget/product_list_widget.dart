@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_prokala/features/category_features/screen/all_category_screen.dart';
 import 'package:flutter_prokala/features/product_feature/screen/product_detail_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,10 +11,12 @@ class ProductListWidget extends StatelessWidget {
     super.key,
     required this.list,
     this.title,
+    required this.id,
   });
 
   final List<dynamic>? list;
   final String? title;
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +40,11 @@ class ProductListWidget extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: (){
-
-                  Navigator.of(context).pushNamed(ProductDetailScreen.screenId,arguments: {
-                    'product_id':list![index].id
-                  },);
-
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    ProductDetailScreen.screenId,
+                    arguments: {'product_id': list![index].id},
+                  );
                 },
                 child: Padding(
                   padding: EdgeInsets.all(15.sp),
@@ -57,18 +59,25 @@ class ProductListWidget extends StatelessWidget {
               );
             },
           ),
-          Center(
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'مشاهده همه',
-                style: TextStyle(
-                  fontSize: Responsive.isTablet(context) ? 13.sp : 16.sp,
-                  fontFamily: 'bold',
+          id == null
+              ? const SizedBox.shrink()
+              : Center(
+                  child: TextButton(
+                    onPressed: () {
+                      ///on tap
+                      Navigator.pushNamed(context, AllCategoryScreen.screenId, arguments: {
+                        'category_id': id,
+                      });
+                    },
+                    child: Text(
+                      'مشاهده همه',
+                      style: TextStyle(
+                        fontSize: Responsive.isTablet(context) ? 13.sp : 16.sp,
+                        fontFamily: 'bold',
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
         ],
       ),
     );
