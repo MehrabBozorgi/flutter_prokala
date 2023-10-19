@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_prokala/features/public_features/error/error_message_class.dart';
+import 'package:flutter_prokala/features/public_features/functions/secure_storage.dart';
 import 'package:meta/meta.dart';
 
 import '../../public_features/error/error_exception.dart';
 import '../services/auth_repository.dart';
 
 part 'auth_event.dart';
-
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -17,6 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc(this.authRepository) : super(AuthInitial()) {
     on<CallAuthEvent>(_callAuth);
+    on<CallLogOutEvent>(_callLogOut);
   }
 
   FutureOr<void> _callAuth(CallAuthEvent event, Emitter<AuthState> emit) async {
@@ -26,6 +27,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final String? token = await authRepository.callAuthApi(event.phoneNumber);
 
       emit(AuthCompletedState(token!));
+    } on DioException catch (e) {
+      emit(AuthErrorState(ErrorMessageClass(errorMsg: ErrorExceptions().fromError(e))));
+    }
+  }
+
+  FutureOr<void> _callLogOut(CallLogOutEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoadingState());
+
+    try {
+      await authRepository.callLogOut();
+
+      await SecureStorageClass().deleteUserToken();
+
+      emit(LogOutCompletedState());
     } on DioException catch (e) {
       emit(AuthErrorState(ErrorMessageClass(errorMsg: ErrorExceptions().fromError(e))));
     }

@@ -17,7 +17,7 @@ class SliverSearchBar extends StatelessWidget {
       forceElevated: true,
       backgroundColor: theme.scaffoldBackgroundColor,
       toolbarHeight: Responsive.isTablet(context) ? 80 : 65,
-      pinned: true,
+      pinned: true,elevation: 2,
       flexibleSpace: SearchBarWidget(),
     );
   }

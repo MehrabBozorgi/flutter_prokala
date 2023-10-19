@@ -11,4 +11,8 @@ class AuthRepository {
 
     return token;
   }
+
+  Future<void> callLogOut() async {
+    await _apiService.callLogOut();
+  }
 }

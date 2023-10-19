@@ -11,4 +11,18 @@ class FavoriteApiServices {
     final Response response = await _dio.get('$apiUrl/add-favorite/$id/$token');
     return response;
   }
+
+  Future<Response> callFavoriteList() async {
+    final token = await SecureStorageClass().getUserToken();
+    final Response response = await _dio.get('$apiUrl/user-favorite/$token');
+    return response;
+  }
+  
+  Future<Response >removeItemFavorite(int id)async{
+    
+    final Response response=await _dio.get('$apiUrl/delete-favorite/$id');
+    return response;
+    
+  }
+  
 }

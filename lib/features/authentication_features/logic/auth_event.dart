@@ -8,3 +8,5 @@ class CallAuthEvent extends AuthEvent{
 
   CallAuthEvent(this.phoneNumber);
 }
+
+class CallLogOutEvent extends AuthEvent{}

@@ -44,17 +44,15 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
                       .read<CategoryBloc>()
                       .add(CallAllCategoryEvent(arguments['category_id']));
                 },
-                child:state.allCategoryModel.product==null?
-                    
-                    EmptyWidget(title: 'این دسته بندی محصولی ندارد')
-                    
+                child: state.allCategoryModel.product == null
+                    ? EmptyWidget(title: 'این دسته بندی محصولی ندارد')
                     : ListView.builder(
-                  itemCount: state.allCategoryModel.product!.length,
-                  itemBuilder: (context, index) {
-                    final helper = state.allCategoryModel.product![index];
-                    return AllCategoryItem(helper: helper);
-                  },
-                ),
+                        itemCount: state.allCategoryModel.product!.length,
+                        itemBuilder: (context, index) {
+                          final helper = state.allCategoryModel.product![index];
+                          return AllCategoryItem(helper: helper);
+                        },
+                      ),
               );
             }
             if (state is AllCategoryErrorState) {

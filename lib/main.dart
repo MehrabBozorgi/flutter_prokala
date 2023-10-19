@@ -17,9 +17,11 @@ import 'features/category_features/screen/all_category_screen.dart';
 import 'features/category_features/screen/category_screen.dart';
 import 'features/comment_features/screen/add_comment_screen.dart';
 import 'features/comment_features/screen/show_comment_screen.dart';
+import 'features/favorite_features/screen/favorite_screen.dart';
 import 'features/home_features/screens/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
 import 'features/product_feature/screen/product_detail_screen.dart';
+import 'features/profile_features/screen/check_profile.dart';
 import 'features/public_features/logic/token_check/token_check_cubit.dart';
 import 'features/public_features/screens/bottom_nav_bar.dart';
 import 'features/search_feature/screen/search_screen.dart';
@@ -74,6 +76,8 @@ class MyApp extends StatelessWidget {
             AddCommentScreen.screenId: (context) => const AddCommentScreen(),
             AllCategoryScreen.screenId: (context) => const AllCategoryScreen(),
             SearchScreen.screenId: (context) => const SearchScreen(),
+            CheckProfile.screenId: (context) => const CheckProfile(),
+            FavoriteScreen.screenId: (context) => const FavoriteScreen(),
           },
         ),
       ),

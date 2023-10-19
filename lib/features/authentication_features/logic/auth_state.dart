@@ -20,3 +20,5 @@ class AuthErrorState extends AuthState {
   AuthErrorState(this.errorMessage);
 
 }
+///---- logout
+class LogOutCompletedState extends AuthState{}

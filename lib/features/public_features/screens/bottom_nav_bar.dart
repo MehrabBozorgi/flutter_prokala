@@ -7,6 +7,7 @@ import 'package:flutter_prokala/features/public_features/logic/token_check/token
 import '../../cart_feature/screen/check_cart.dart';
 import '../../category_features/screen/category_screen.dart';
 import '../../home_features/screens/home_screen.dart';
+import '../../profile_features/screen/check_profile.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
   const BottomNavBarScreen({super.key});
@@ -21,8 +22,8 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   List<Widget> screenList = [
     const HomeScreen(),
     const CategoryScreen(),
-    CheckCart(),
-    Container(),
+    const CheckCart(),
+    const CheckProfile(),
   ];
 
   @override
