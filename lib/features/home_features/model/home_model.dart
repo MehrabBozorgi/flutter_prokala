@@ -27,9 +27,10 @@ class HomeModel {
   String? colFiveName;
   String? colFiveId;
 
-
   HomeModel.fromJson(dynamic json) {
-    topBanner = json['top_banner'] != null ? TopBanner.fromJson(json['top_banner']) : null;
+    topBanner = json['top_banner'] != null
+        ? TopBanner.fromJson(json['top_banner'])
+        : null;
 
     if (json['sliders'] != null) {
       sliders = [];
@@ -93,42 +94,31 @@ class HomeModel {
       json['col_five'].forEach((value) {
         colFive?.add(ColFive.fromJson(value));
       });
-    } if (json['banner_two_column'] != null) {
+    }
+    if (json['banner_two_column'] != null) {
       twoBanner = [];
       json['banner_two_column'].forEach((value) {
         twoBanner?.add(TwoBanners.fromJson(value));
       });
     }
 
-    colOneId = json['col_one_id'] ?? '0';
-    colTwoId = json['col_two_id'] ?? '0';
-    colThreeId = json['col_three_id'] ?? '0';
-    colFourId = json['col_four_id'] ?? '0';
-    colFiveId = json['col_five_id'] ?? '0';
+    colOneId = json['col_one_id'].toString() ?? '0';
+    colTwoId = json['col_two_id'].toString() ?? '0';
+    colThreeId = json['col_three_id'].toString() ?? '0';
+    colFourId = json['col_four_id'].toString() ?? '0';
+    colFiveId = json['col_five_id'].toString() ?? '0';
     colOneName = json['col_one_name'];
     colTwoName = json['col_two_name'];
     colThreeName = json['col_three_name'];
     colFourName = json['col_four_name'];
     colFiveName = json['col_five_name'];
-
-
-
-
-
-
-
-
   }
 }
 
-
-
-class TwoBanners extends CategoryBanner{
+class TwoBanners extends CategoryBanner {
   TwoBanners.fromJson(super.json) : super.fromJson();
-
-
-
 }
+
 class CategoryBanner {
   String? link;
   String? image;
@@ -159,11 +149,11 @@ class Amazing {
   });
 
   Amazing.fromJson(dynamic json) {
-    id = json['id'];
+    id = json['id'].toString();
     title = json['title'];
     image = json['image'];
     defaultPrice = json['default_price'];
-    percent = json['percent'];
+    percent = json['percent'].toString();
     percentPrice = json['percent_price'];
   }
 }
