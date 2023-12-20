@@ -7,6 +7,7 @@ import 'package:flutter_prokala/features/authentication_features/services/auth_r
 import 'package:flutter_prokala/features/favorite_features/screen/favorite_screen.dart';
 import 'package:flutter_prokala/features/home_features/widget/sliver_search_bar.dart';
 import 'package:flutter_prokala/features/intro_features/screens/splash_screen.dart';
+import 'package:flutter_prokala/features/public_features/logic/change_theme/change_theme_cubit.dart';
 import 'package:flutter_prokala/features/public_features/widget/snack_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -53,6 +54,20 @@ class ProfileScreen extends StatelessWidget {
                       Navigator.of(context).pushNamed(FavoriteScreen.screenId);
                     },
                   ),
+
+                  ListTile(
+                    title: Text(
+                      'تغییر تم',
+                      style: TextStyle(fontFamily: 'bold', fontSize: 16.sp),
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                    onTap: () {
+
+                      BlocProvider.of<ChangeThemeCubit>(context).changeTheme();
+
+                    },
+                  ),
+
                   const AboutUsWidget(),
                   const LogOutWidget(),
                 ],
@@ -79,7 +94,8 @@ class LogOutWidget extends StatelessWidget {
           SizedBox(width: getWidth(context, 0.02)),
           Text(
             'خروج از حساب کاربری',
-            style: TextStyle(fontFamily: 'bold', fontSize: 16.sp, color: Colors.red),
+            style: TextStyle(
+                fontFamily: 'bold', fontSize: 16.sp, color: Colors.red),
           ),
         ],
       ),
@@ -105,7 +121,8 @@ class LogOutWidget extends StatelessWidget {
                   listener: (context, state) {
                     if (state is AuthErrorState) {
                       Navigator.pop(context);
-                      getSnackBarWidget(context, state.errorMessage.errorMsg!, Colors.red);
+                      getSnackBarWidget(
+                          context, state.errorMessage.errorMsg!, Colors.red);
                     }
                     if (state is LogOutCompletedState) {
                       Navigator.pop(context);
@@ -142,7 +159,8 @@ class LogOutWidget extends StatelessWidget {
                         ),
                         Center(
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: getWidth(context, 0.03)),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth(context, 0.03)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,7 +173,8 @@ class LogOutWidget extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    BlocProvider.of<AuthBloc>(context).add(CallLogOutEvent());
+                                    BlocProvider.of<AuthBloc>(context)
+                                        .add(CallLogOutEvent());
                                   },
                                   child: Text(
                                     'خروج از حساب',
@@ -225,7 +244,8 @@ class AboutUsWidget extends StatelessWidget {
               width: getAllWidth(context),
               height: Responsive.isTablet(context) ? 300 : 250,
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 10.sp),
+                padding:
+                    EdgeInsets.symmetric(vertical: 15.sp, horizontal: 10.sp),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
