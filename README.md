@@ -1,16 +1,4 @@
 # flutter_prokala
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Untitled-1](https://github.com/MehrabBozorgi/flutter_prokala/assets/78899995/fce05f32-ccfd-4bcb-8066-e080f847f5c9)
