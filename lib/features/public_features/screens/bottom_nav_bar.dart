@@ -41,7 +41,9 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
         final bottomNavCubit = BlocProvider.of<BottomNavCubit>(context);
         return SafeArea(
           child: Scaffold(
+
             bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               selectedItemColor: primaryColor,
               showSelectedLabels: true,
               showUnselectedLabels: true,

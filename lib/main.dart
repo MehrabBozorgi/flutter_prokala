@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_prokala/const/theme/theme.dart';
-import 'package:flutter_prokala/features/cart_feature/screen/payment_webview.dart';
 import 'package:flutter_prokala/features/home_features/logic/bloc/home_bloc.dart';
 import 'package:flutter_prokala/features/home_features/services/home_respository.dart';
 import 'package:flutter_prokala/features/intro_features/logic/intro_cubit.dart';
 import 'package:flutter_prokala/features/intro_features/screens/splash_screen.dart';
 import 'package:flutter_prokala/features/public_features/logic/bottom_nav_cubit.dart';
+import 'package:flutter_prokala/features/public_features/logic/change_theme/change_theme_cubit.dart';
 import 'package:flutter_prokala/features/public_features/screens/unknownrout_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -46,40 +46,51 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => IntroCubit()),
           BlocProvider(create: (context) => TokenCheckCubit()),
+          BlocProvider(create: (context) => ChangeThemeCubit()),
           // BlocProvider(create: (context) => HomeCubit()),
           BlocProvider(create: (context) => BottomNavCubit()),
           BlocProvider(create: (context) => HomeBloc(HomeRepository())),
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [Locale('fa')],
-          theme: CustomTheme.lightTheme,
-          // home: SplashScreen(),
-
-          initialRoute: PaymentSWebViewScreen.screenId,
-          onUnknownRoute: (settings) => MaterialPageRoute(
-            builder: (context) => const UnKnowRoutScreen(),
-          ),
-          routes: {
-            SplashScreen.screenId: (context) => const SplashScreen(),
-            IntroScreen.screenId: (context) => const IntroScreen(),
-            HomeScreen.screenId: (context) => const HomeScreen(),
-            BottomNavBarScreen.screenId: (context) => const BottomNavBarScreen(),
-            CategoryScreen.screenId: (context) => const CategoryScreen(),
-            AuthScreen.screenId: (context) => const AuthScreen(),
-            ProductDetailScreen.screenId: (context) => const ProductDetailScreen(),
-            ShowCommentScreen.screenId: (context) => const ShowCommentScreen(),
-            AddCommentScreen.screenId: (context) => const AddCommentScreen(),
-            AllCategoryScreen.screenId: (context) => const AllCategoryScreen(),
-            SearchScreen.screenId: (context) => const SearchScreen(),
-            CheckProfile.screenId: (context) => const CheckProfile(),
-            FavoriteScreen.screenId: (context) => const FavoriteScreen(),
-            PaymentSWebViewScreen.screenId: (context) => const PaymentSWebViewScreen(),
+        child: BlocBuilder<ChangeThemeCubit, ThemeData>(
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [Locale('fa')],
+              theme: context.read<ChangeThemeCubit>().customTheme ==
+                      CustomTheme.lightTheme
+                  ? CustomTheme.lightTheme
+                  : CustomTheme.darkTheme,
+              // home: SplashScreen(),
+              initialRoute: SplashScreen.screenId,
+              onUnknownRoute: (settings) => MaterialPageRoute(
+                builder: (context) => const UnKnowRoutScreen(),
+              ),
+              routes: {
+                SplashScreen.screenId: (context) => const SplashScreen(),
+                IntroScreen.screenId: (context) => const IntroScreen(),
+                HomeScreen.screenId: (context) => const HomeScreen(),
+                BottomNavBarScreen.screenId: (context) =>
+                    const BottomNavBarScreen(),
+                CategoryScreen.screenId: (context) => const CategoryScreen(),
+                AuthScreen.screenId: (context) => const AuthScreen(),
+                ProductDetailScreen.screenId: (context) =>
+                    const ProductDetailScreen(),
+                ShowCommentScreen.screenId: (context) =>
+                    const ShowCommentScreen(),
+                AddCommentScreen.screenId: (context) =>
+                    const AddCommentScreen(),
+                AllCategoryScreen.screenId: (context) =>
+                    const AllCategoryScreen(),
+                SearchScreen.screenId: (context) => const SearchScreen(),
+                CheckProfile.screenId: (context) => const CheckProfile(),
+                FavoriteScreen.screenId: (context) => const FavoriteScreen(),
+              },
+            );
           },
         ),
       ),
@@ -91,6 +102,7 @@ class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

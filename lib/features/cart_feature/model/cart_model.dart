@@ -4,12 +4,12 @@ class CartModel {
   List<Cart>? cart;
 
   CartModel.fromJson(dynamic json) {
-
-   if(json['cart']!= null){
-     cart=[];
-     json['cart'].forEach((v) {
-       cart?.add(Cart.fromJson(v));
-     });   }
+    if (json['cart'] != null) {
+      cart = [];
+      json['cart'].forEach((v) {
+        cart?.add(Cart.fromJson(v));
+      });
+    }
     cartTotal = json['cart_total'].toString();
     cartCount = json['cart_count'];
   }
@@ -39,10 +39,10 @@ class Cart {
 
   Cart.fromJson(dynamic json) {
     cartId = json['cart_id'];
-    productId = json['product_id'];
+    productId = json['product_id'].toString();
     productTitle = json['product_title'];
     productImage = json['product_image'];
-    count = json['count'];
+    count = json['count'].toString();
     productPrice = json['product_price'];
     productDeliveryPrice = json['delivery_price'];
   }

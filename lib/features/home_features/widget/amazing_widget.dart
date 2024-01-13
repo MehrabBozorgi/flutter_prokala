@@ -131,6 +131,7 @@ class AmazingItems extends StatelessWidget {
               child: Text(
                 helper.title!,
                 style: TextStyle(
+                  color: theme.textTheme.bodyLarge!.color,
                   fontFamily: 'bold',
                   fontSize: Responsive.isTablet(context) ? 14.sp : 16.sp,
                 ),

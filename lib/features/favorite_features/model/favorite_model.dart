@@ -38,6 +38,6 @@ class Favorite {
     productTitle = json['product_title'];
     productPrice = json['product_price'];
     productImage = json['product_image'];
-    productId = json['product_id'];
+    productId = json['product_id'].toString();
   }
 }
