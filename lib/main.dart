@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_prokala/const/theme/theme.dart';
+import 'package:flutter_prokala/features/cart_feature/screen/payment_webview.dart';
 import 'package:flutter_prokala/features/home_features/logic/bloc/home_bloc.dart';
 import 'package:flutter_prokala/features/home_features/services/home_respository.dart';
 import 'package:flutter_prokala/features/intro_features/logic/intro_cubit.dart';
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
           theme: CustomTheme.lightTheme,
           // home: SplashScreen(),
 
-          initialRoute: SplashScreen.screenId,
+          initialRoute: PaymentSWebViewScreen.screenId,
           onUnknownRoute: (settings) => MaterialPageRoute(
             builder: (context) => const UnKnowRoutScreen(),
           ),
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
             SearchScreen.screenId: (context) => const SearchScreen(),
             CheckProfile.screenId: (context) => const CheckProfile(),
             FavoriteScreen.screenId: (context) => const FavoriteScreen(),
+            PaymentSWebViewScreen.screenId: (context) => const PaymentSWebViewScreen(),
           },
         ),
       ),

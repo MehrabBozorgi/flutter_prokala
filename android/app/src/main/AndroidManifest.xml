@@ -21,7 +21,7 @@
 
 
     <application
-        android:label="flutter_prokala"
+        android:label="پرو کالا"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
