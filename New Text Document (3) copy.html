@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+  <meta charset="UTF-8">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>Beautiful Design</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+      /* Light gray background */
+    }
+
+    .container {
+      background-color: #fff;
+      /* White background for content */
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      /* Soft shadow effect */
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      /* Green button color */
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+      /* Darker green on hover */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Deep Link</h1>
+    <div class="buttons">
+      <a href="app://prokala/succeed">
+        <button>SUCCEED</button>
+      </a>
+      <hr>
+      <a href="app://prokala/failed">
+        <button style="background-color: red;">FAILED</button>
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>
