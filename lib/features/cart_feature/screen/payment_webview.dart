@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../const/shape/media_query.dart';
-import '../../../const/theme/colors.dart';
 import '../../public_features/logic/bottom_nav_cubit.dart';
 import '../../public_features/screens/bottom_nav_bar.dart';
 import '../../public_features/widget/snack_bar.dart';
 
 class PaymentSWebViewScreen extends StatefulWidget {
-  const PaymentSWebViewScreen({Key? key}) : super(key: key);
+  const PaymentSWebViewScreen({super.key});
+
   static const String screenId = '/payment_webview_screen';
 
   @override
@@ -28,25 +27,31 @@ class _PaymentSWebViewScreenState extends State<PaymentSWebViewScreen> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onNavigationRequest: (NavigationRequest request) {
-            // if (request.url == 'app://open_flutter_prokala/succeed') {
-            //   // Handle the deep link.
-            //   // ...
-            //   getSnackBarWidget(context, 'سفارش شما با موفقیت ثبت شد', Colors.green);
-            //   BlocProvider.of<BottomNavCubit>(context).onTap(0);
-            //   Navigator.pushNamedAndRemoveUntil(context, BottomNavBarScreen.screenId, (route) => false);
-            //   return NavigationDecision.navigate;
-            // } else if (request.url == 'app://open_flutter_prokala/failed') {
-            //   getSnackBarWidget(context, 'سفارش شما با شکست مواجه شد، دوباره تلاش کنید', Colors.red);
-            //   navIndex = 0;
-            //   Navigator.pushNamedAndRemoveUntil(context, BottomNavBarScreen.screenId, (route) => false);
-            //   return NavigationDecision.navigate;
-            // }
+            // print('----------------');
+            // print(request.url);
+            if (request.url == 'app://prokala/succeed') {
+              // Handle the deep link.
+              // ...
+              getSnackBarWidget(context, 'سفارش شما با موفقیت ثبت شد', Colors.green);
+              BlocProvider.of<BottomNavCubit>(context).onTap(0);
+              Navigator.pushNamedAndRemoveUntil(context, BottomNavBarScreen.screenId, (route) => false);
+              return NavigationDecision.navigate;
+            }
+
+
+
+            else if (request.url == 'app://prokala/failed') {
+              getSnackBarWidget(context, 'سفارش شما با شکست مواجه شد، دوباره تلاش کنید', Colors.red);
+              BlocProvider.of<BottomNavCubit>(context).onTap(0);
+              Navigator.pushNamedAndRemoveUntil(context, BottomNavBarScreen.screenId, (route) => false);
+              return NavigationDecision.navigate;
+            }
 
             return NavigationDecision.prevent;
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://mehrabbozorgi.ir'));
+      ..loadRequest(Uri.parse('https://programmingshow.ir/programminshow/deeplink.html'));
   }
 
   @override

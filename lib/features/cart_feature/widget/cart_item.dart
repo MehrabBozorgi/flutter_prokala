@@ -20,7 +20,7 @@ class CartItem extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 7.5.sp),
       padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 7.5.sp),
-      height: Responsive.isTablet(context) ? 300 : 200,
+      height: Responsive.isTablet(context) ? 320 : 220,
       width: getAllWidth(context),
       child: Column(
         children: [
@@ -45,18 +45,12 @@ class CartItem extends StatelessWidget {
                       Text(
                         helper.productTitle!,
                         maxLines: 2,
-                        style: TextStyle(
-                          fontFamily: 'bold',
-                          fontSize: 16.sp,
-                        ),
+                        style: TextStyle(fontFamily: 'bold', fontSize: 15.sp),
                       ),
                       SizedBox(height: 5.sp),
                       Text(
                         '${getPriceFormat(helper.productPrice!.toString())} تومان',
-                        style: TextStyle(
-                          fontFamily: 'bold',
-                          fontSize: 16.sp,
-                        ),
+                        style: TextStyle(fontFamily: 'bold', fontSize: 15.sp),
                       ),
                       SizedBox(height: 10.sp),
                       Row(
@@ -94,8 +88,8 @@ class CartItem extends StatelessWidget {
                                     ? IconButton(
                                         onPressed: () {
                                           ///remove
-                                          BlocProvider.of<CartBloc>(context).add(
-                                              DeleteItemCartEvent(helper.cartId.toString()));
+                                          BlocProvider.of<CartBloc>(context)
+                                              .add(DeleteItemCartEvent(helper.cartId.toString()));
                                         },
                                         icon: const Icon(
                                           Icons.delete_forever_outlined,
