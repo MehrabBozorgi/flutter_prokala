@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../public_features/functions/number_to_three.dart';
+import '../screen/payment_webview.dart';
 
 class CartPriceSection extends StatelessWidget {
   const CartPriceSection({super.key, required this.cartTotal});
@@ -17,7 +18,9 @@ class CartPriceSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, PaymentSWebViewScreen.screenId);
+              },
               child: const Text('ادامه خرید', style: TextStyle(fontFamily: 'bold')),
             ),
             Text(

@@ -14,6 +14,7 @@ import 'package:flutter_prokala/features/public_features/screens/unknownrout_scr
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/authentication_features/screen/auth_screen.dart';
+import 'features/cart_feature/screen/payment_webview.dart';
 import 'features/category_features/screen/all_category_screen.dart';
 import 'features/category_features/screen/category_screen.dart';
 import 'features/comment_features/screen/add_comment_screen.dart';
@@ -61,8 +62,7 @@ class MyApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: const [Locale('fa')],
-              theme: context.read<ChangeThemeCubit>().customTheme ==
-                      CustomTheme.lightTheme
+              theme: context.read<ChangeThemeCubit>().customTheme == CustomTheme.lightTheme
                   ? CustomTheme.lightTheme
                   : CustomTheme.darkTheme,
               // home: SplashScreen(),
@@ -74,21 +74,17 @@ class MyApp extends StatelessWidget {
                 SplashScreen.screenId: (context) => const SplashScreen(),
                 IntroScreen.screenId: (context) => const IntroScreen(),
                 HomeScreen.screenId: (context) => const HomeScreen(),
-                BottomNavBarScreen.screenId: (context) =>
-                    const BottomNavBarScreen(),
+                BottomNavBarScreen.screenId: (context) => const BottomNavBarScreen(),
                 CategoryScreen.screenId: (context) => const CategoryScreen(),
                 AuthScreen.screenId: (context) => const AuthScreen(),
-                ProductDetailScreen.screenId: (context) =>
-                    const ProductDetailScreen(),
-                ShowCommentScreen.screenId: (context) =>
-                    const ShowCommentScreen(),
-                AddCommentScreen.screenId: (context) =>
-                    const AddCommentScreen(),
-                AllCategoryScreen.screenId: (context) =>
-                    const AllCategoryScreen(),
+                ProductDetailScreen.screenId: (context) => const ProductDetailScreen(),
+                ShowCommentScreen.screenId: (context) => const ShowCommentScreen(),
+                AddCommentScreen.screenId: (context) => const AddCommentScreen(),
+                AllCategoryScreen.screenId: (context) => const AllCategoryScreen(),
                 SearchScreen.screenId: (context) => const SearchScreen(),
                 CheckProfile.screenId: (context) => const CheckProfile(),
                 FavoriteScreen.screenId: (context) => const FavoriteScreen(),
+                PaymentSWebViewScreen.screenId: (context) => const PaymentSWebViewScreen(),
               },
             );
           },
@@ -102,7 +98,6 @@ class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }
