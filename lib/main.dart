@@ -43,53 +43,65 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => IntroCubit()),
-          BlocProvider(create: (context) => TokenCheckCubit()),
-          BlocProvider(create: (context) => ChangeThemeCubit()),
-          // BlocProvider(create: (context) => HomeCubit()),
-          BlocProvider(create: (context) => BottomNavCubit()),
-          BlocProvider(create: (context) => HomeBloc(HomeRepository())),
-        ],
-        child: BlocBuilder<ChangeThemeCubit, ThemeData>(
-          builder: (context, state) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [Locale('fa')],
-              theme: context.read<ChangeThemeCubit>().customTheme == CustomTheme.lightTheme
-                  ? CustomTheme.lightTheme
-                  : CustomTheme.darkTheme,
-              // home: SplashScreen(),
-              initialRoute: SplashScreen.screenId,
-              onUnknownRoute: (settings) => MaterialPageRoute(
-                builder: (context) => const UnKnowRoutScreen(),
-              ),
-              routes: {
-                SplashScreen.screenId: (context) => const SplashScreen(),
-                IntroScreen.screenId: (context) => const IntroScreen(),
-                HomeScreen.screenId: (context) => const HomeScreen(),
-                BottomNavBarScreen.screenId: (context) => const BottomNavBarScreen(),
-                CategoryScreen.screenId: (context) => const CategoryScreen(),
-                AuthScreen.screenId: (context) => const AuthScreen(),
-                ProductDetailScreen.screenId: (context) => const ProductDetailScreen(),
-                ShowCommentScreen.screenId: (context) => const ShowCommentScreen(),
-                AddCommentScreen.screenId: (context) => const AddCommentScreen(),
-                AllCategoryScreen.screenId: (context) => const AllCategoryScreen(),
-                SearchScreen.screenId: (context) => const SearchScreen(),
-                CheckProfile.screenId: (context) => const CheckProfile(),
-                FavoriteScreen.screenId: (context) => const FavoriteScreen(),
-                PaymentSWebViewScreen.screenId: (context) => const PaymentSWebViewScreen(),
+      builder: (context, child) =>
+          MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => IntroCubit()),
+              BlocProvider(create: (context) => TokenCheckCubit()),
+              BlocProvider(create: (context) => ChangeThemeCubit()),
+              // BlocProvider(create: (context) => HomeCubit()),
+              BlocProvider(create: (context) => BottomNavCubit()),
+              BlocProvider(create: (context) => HomeBloc(HomeRepository())),
+            ],
+            child: BlocBuilder<ChangeThemeCubit, ThemeData>(
+              builder: (context, state) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  localizationsDelegates: const [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: const [Locale('fa')],
+                  theme: context
+                      .read<ChangeThemeCubit>()
+                      .customTheme == CustomTheme.lightTheme
+                      ? CustomTheme.lightTheme
+                      : CustomTheme.darkTheme,
+                  // home: SplashScreen(),
+                  initialRoute: SplashScreen.screenId,
+                  onUnknownRoute: (settings) =>
+                      MaterialPageRoute(
+                        builder: (context) => const UnKnowRoutScreen(),
+                      ),
+                  routes: {
+                    SplashScreen.screenId: (context) => const SplashScreen(),
+                    IntroScreen.screenId: (context) => const IntroScreen(),
+                    HomeScreen.screenId: (context) => const HomeScreen(),
+                    BottomNavBarScreen.screenId: (
+                        context) => const BottomNavBarScreen(),
+                    CategoryScreen.screenId: (
+                        context) => const CategoryScreen(),
+                    AuthScreen.screenId: (context) => const AuthScreen(),
+                    ProductDetailScreen.screenId: (
+                        context) => const ProductDetailScreen(),
+                    ShowCommentScreen.screenId: (
+                        context) => const ShowCommentScreen(),
+                    AddCommentScreen.screenId: (
+                        context) => const AddCommentScreen(),
+                    AllCategoryScreen.screenId: (
+                        context) => const AllCategoryScreen(),
+                    SearchScreen.screenId: (context) => const SearchScreen(),
+                    CheckProfile.screenId: (context) => const CheckProfile(),
+                    FavoriteScreen.screenId: (
+                        context) => const FavoriteScreen(),
+                    PaymentSWebViewScreen.screenId: (
+                        context) => const PaymentSWebViewScreen(),
+                  },
+                );
               },
-            );
-          },
-        ),
-      ),
+            ),
+          ),
     );
   }
 }
@@ -98,6 +110,7 @@ class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+      ..badCertificateCallback = (X509Certificate cert, String host,
+          int port) => true;
   }
 }
