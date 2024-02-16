@@ -20,7 +20,7 @@ class CartItem extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 7.5.sp),
       padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 7.5.sp),
-      height: Responsive.isTablet(context) ? 320 : 220,
+      height: Responsive.isTablet(context) ? 320 : 260,
       width: getAllWidth(context),
       child: Column(
         children: [
