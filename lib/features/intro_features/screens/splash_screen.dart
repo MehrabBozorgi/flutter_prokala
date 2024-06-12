@@ -23,6 +23,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   navigate() {
     Timer(const Duration(seconds: 3), () async {
+
+
       if (await SharedPref().getIntroStatus()) {
         Navigator.of(context).pushNamedAndRemoveUntil(
           BottomNavBarScreen.screenId,
@@ -32,6 +34,9 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushReplacementNamed(IntroScreen.screenId);
       }
     });
+
+
+
   }
 
   @override
