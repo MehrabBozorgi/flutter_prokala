@@ -71,6 +71,7 @@ class FavoriteListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ListView.separated(
       separatorBuilder: (context, index) => Padding(
         padding: EdgeInsets.all(8.sp),
